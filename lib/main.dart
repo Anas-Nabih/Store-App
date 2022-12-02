@@ -1,5 +1,6 @@
 import 'package:store_app/constants.dart';
 import 'package:store_app/routes/routes.dart';
+import 'package:store_app/services/get_products.dart';
 import 'package:store_app/ui/home_screen/home_screen.dart';
 import 'package:store_app/ui/mainScreen/main_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetAllProduct.getAllProduct();
     return Sizer(
       builder:(context, orientation, deviceType) =>  MaterialApp(
         title: 'Flutter Demo',
