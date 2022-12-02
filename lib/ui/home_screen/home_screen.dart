@@ -1,4 +1,8 @@
+import 'package:store_app/helper/api.dart';
+import 'package:store_app/helper/const.dart';
+import 'package:store_app/models/product_model.dart';
 import 'package:store_app/ui/home_screen/HomeProvider.dart';
+import 'package:store_app/ui/products.dart';
 import 'package:store_app/ui/widgets/home_app_bar.dart';
 import 'package:store_app/ui/widgets/home_categories_list.dart';
 import 'package:store_app/ui/widgets/home_head_line.dart';
@@ -87,7 +91,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       BuildHeadLine(
                         title: "Popular Product",
                       ),
-                      PopularList()
+                      FutureBuilder(
+                        future: Api.get(endPoint: Const.productsEP),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            print("herrr${snapshot.data}");
+                            Products();
+                          } else {
+                            CircularProgressIndicator();
+                          }
+                        },
+                      )
+                      // BuildHeadLine(
+                      //   title: "Popular Product",
+                      // ),
+                      // PopularList()
                     ],
                   ),
                 ),
