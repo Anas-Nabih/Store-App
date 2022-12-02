@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetAllProduct.getAllProduct();
-    return Sizer(
+     return Sizer(
       builder:(context, orientation, deviceType) =>  MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
