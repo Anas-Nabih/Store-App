@@ -18,8 +18,8 @@ class NotificationIcon extends StatelessWidget {
       onTap: onPress?? (){},
       borderRadius: BorderRadius.circular(50),
       child: Stack(
-        // overflow: Overflow.visible,
-        children: [
+        clipBehavior: Clip.none,
+         children: [
           Container(
             width: 5.h,height: 5.h,
             padding: const EdgeInsets.all(2),

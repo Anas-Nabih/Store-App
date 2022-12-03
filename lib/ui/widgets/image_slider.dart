@@ -113,7 +113,7 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
                             child: IconButton(
                               onPressed: () {
                               },
-                              iconSize: 22,
+                              iconSize: 4.w,
                               icon: Icon(Icons.arrow_forward_ios),
                               color: Colors.white,
                             ),
@@ -159,8 +159,6 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
               setState(() {
 
               });
-              print("provider ${widget.provider.animatedIndex}");
-              print("index ${i}");
               },
             scrollDirection: Axis.horizontal,
           )),

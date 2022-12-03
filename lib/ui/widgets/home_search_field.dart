@@ -16,10 +16,9 @@ class HomeSearchField extends StatelessWidget {
       child: Container(
         height: 6.h,width: 70.w,
         padding: EdgeInsets.symmetric(horizontal: 2.w),
-        margin: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
             color: kSecondaryColor.withOpacity(0.2),
-            borderRadius: const BorderRadius.all(Radius.circular(12))
+            borderRadius: const BorderRadius.all(Radius.circular(8))
         ),
         child: Row(
           children: [

@@ -1,7 +1,7 @@
 class ProductModel {
   int id;
   String title;
-  // double price;
+  // double flutter pub add shimmerprice;
   String description;
   String category;
   String image;

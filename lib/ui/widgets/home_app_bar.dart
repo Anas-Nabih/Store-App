@@ -11,15 +11,19 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        HomeSearchField(),
-        NotificationIcon(img:"assets/icons/Cart Icon.svg",num: 0,
-          onPress: ()=>Navigator.pushNamed(context, CartScreen.routeName,arguments: CartScreenArgument(isHome: true)),),
-        NotificationIcon(img:"assets/icons/Bell.svg",num: 3,),
-        SizedBox(width: 1.w,)
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 1.h,),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          HomeSearchField(),
+          SizedBox(width: 2.w,),
+          NotificationIcon(img:"assets/icons/Cart Icon.svg",num: 0,
+            onPress: ()=>Navigator.pushNamed(context, CartScreen.routeName,arguments: CartScreenArgument(isHome: true)),),
+          SizedBox(width: 1.w,),
+          NotificationIcon(img:"assets/icons/Bell.svg",num: 3,),
+        ],
+      ),
     );
   }
 }

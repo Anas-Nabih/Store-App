@@ -14,8 +14,10 @@ class PopularList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 38.h,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: Product.products.length,
         itemBuilder: (context, index) => CustomCard(index: index),),
@@ -48,8 +50,8 @@ class _CustomCardState extends State<CustomCard> {
               context, ProductDetailScreen.routeName,
               arguments: ProductDetailsArgument(product:Product.products[widget.index])),
           child: Container(
-            height: 25.h,width: 38.w,
-            margin: EdgeInsets.symmetric(vertical: 1.h,horizontal: 2.w),
+            height: 24.h,width: 38.w,
+            margin: EdgeInsets.only(bottom: 1.h,right: 2.w,left: 2.w),
             decoration: BoxDecoration(
                 color: kSecondaryColor.withOpacity(0.1),
                 borderRadius: const BorderRadius.all(Radius.circular(12))

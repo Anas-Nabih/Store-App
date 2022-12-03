@@ -14,6 +14,7 @@ class Products extends StatelessWidget {
     return Container(
       height: 38.h,
       child: ListView.builder(
+          physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
           itemCount: productList.length,
           itemBuilder: (context, index) =>ApiCustomCard(product: productList[index],)),

@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:store_app/helper/api.dart';
 import 'package:store_app/helper/const.dart';
 import 'package:store_app/models/product_model.dart';
+import 'package:store_app/models/special_products.dart';
 import 'package:store_app/services/get_products.dart';
 import 'package:store_app/ui/home_screen/HomeProvider.dart';
 import 'package:store_app/ui/products.dart';
@@ -35,80 +37,52 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Consumer<HomeProvider>(
         builder: (context, value, child) => Scaffold(
           body: SafeArea(
-            child: SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(left: 1.w, top: 2.h, bottom: 2.h),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height),
-                  child: Column(
-                    children: [
-                      HomeAppBar(),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      // CustomImageSlider(
-                      //     images: homeProvider.images, provider: homeProvider),
-                      // DotsIndicator(
-                      //     dotsLength: homeProvider.images.length,
-                      //     provider: homeProvider),
-                      // // DiscountBanner(),
-                      // SizedBox(
-                      //   height: 2.h,
-                      // ),
-                      // CategoriesList(),
-                      // SizedBox(
-                      //   height: 2.h,
-                      // ),
-                      // BuildHeadLine(
-                      //   title: "Special for you",
-                      // ),
-                      // SingleChildScrollView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   child: Row(
-                      //     children: [
-                      //       SizedBox(
-                      //         width: 2.w,
-                      //       ),
-                      //       SpecialOfferCard(
-                      //         img: "assets/images/imgBanner1.png",
-                      //         category: "Smartphone",
-                      //         numOfBrands: 18,
-                      //       ),
-                      //       SizedBox(
-                      //         width: 3.w,
-                      //       ),
-                      //       SpecialOfferCard(
-                      //         img: "assets/images/imgBanner2.png",
-                      //         category: "Fashion",
-                      //         numOfBrands: 24,
-                      //       ),
-                      //       SizedBox(
-                      //         width: 2.w,
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // BuildHeadLine(
-                      //   title: "Popular Product",
-                      // ),
-                      FutureBuilder<List<ProductModel>>(
-                        future: GetAllProduct.getAllProduct(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                             return Products(productList: snapshot.data,);
-                          } else {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                        },
-                      ),
-                      BuildHeadLine(
-                        title: "Popular Product",
-                      ),
-                      PopularList()
-                    ],
-                  ),
-                ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
+              child: Column(
+                children: [
+                  HomeAppBar(),
+                  SizedBox(height: 2.h,),
+                  Expanded(
+                    child: ListView(
+                      physics: BouncingScrollPhysics(),
+                      children: [CustomImageSlider(images: homeProvider.images, provider: homeProvider),
+                        DotsIndicator(dotsLength: homeProvider.images.length, provider: homeProvider),
+                        SizedBox(height: 2.h,),
+                        CategoriesList(),
+                        SizedBox(height: 2.h,),
+                        BuildHeadLine(title: "Special for you",),
+                        SizedBox(
+                          height: 15.h,
+                          child: ListView.separated(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            separatorBuilder: (context, index)=>SizedBox(width: 2.w),
+                            itemCount: 2,itemBuilder: (context, index) =>
+                              SpecialOfferCard(
+                                img: SpecialProducts.specialList[index].img,
+                                category: SpecialProducts.specialList[index].category,
+                                numOfBrands: SpecialProducts.specialList[index].numOfBrands,
+                              ),),
+                        ),
+                        SizedBox(height: 2.h,),
+                        BuildHeadLine(title: "Product from api",),
+                          FutureBuilder<List<ProductModel>>(
+                            future: GetAllProduct.getAllProduct(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Products(productList: snapshot.data,);
+                              } else {
+                                return Center(child: CircularProgressIndicator());
+                              }
+                            },
+                          ),
+                        SizedBox(height: 2.h,),
+                        BuildHeadLine(title: "Popular Product",),
+                        PopularList()],
+                    ),
+                  )
+                ],
               ),
             ),
           ),
