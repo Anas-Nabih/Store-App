@@ -7,11 +7,13 @@ class GetAllProduct {
 
     List<dynamic> data = await Api.get(endPoint: Const.productsEP);
 
+
     List<ProductModel> productsList = [];
 
     for (int i = 0; i < data.length; i++) {
       productsList.add(ProductModel.fromJson(data[i]));
     }
+
      return productsList;
   }
 }

@@ -18,7 +18,7 @@ class PopularList extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: Product.products.length,
-        itemBuilder: (context, index) => PopularItem(index: index),),
+        itemBuilder: (context, index) => CustomCard(index: index),),
     );
   }
 }
@@ -26,38 +26,37 @@ class PopularList extends StatelessWidget {
 
 
 
-class PopularItem extends StatefulWidget {
-  int index;
-  PopularItem({
+class CustomCard extends StatefulWidget {
+
+  CustomCard({
     this.index
   });
+  int index;
 
   @override
-  State<PopularItem> createState() => _PopularItemState();
+  State<CustomCard> createState() => _CustomCardState();
 }
 
-class _PopularItemState extends State<PopularItem> {
+class _CustomCardState extends State<CustomCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: GestureDetector(
-            onTap:()=> Navigator.pushNamed(
-                context, ProductDetailScreen.routeName,
-                arguments: ProductDetailsArgument(product:Product.products[widget.index])),
-            child: Container(
-              /*height: 25.h,*/width: 38.w,
-              margin: EdgeInsets.symmetric(vertical: 1.h,horizontal: 2.w),
-              decoration: BoxDecoration(
-                  color: kSecondaryColor.withOpacity(0.1),
-                  borderRadius: const BorderRadius.all(Radius.circular(12))
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(3.w),
-                child: Image.asset(Product.products[widget.index].img[0]),
-              ),
+        GestureDetector(
+          onTap:()=> Navigator.pushNamed(
+              context, ProductDetailScreen.routeName,
+              arguments: ProductDetailsArgument(product:Product.products[widget.index])),
+          child: Container(
+            height: 25.h,width: 38.w,
+            margin: EdgeInsets.symmetric(vertical: 1.h,horizontal: 2.w),
+            decoration: BoxDecoration(
+                color: kSecondaryColor.withOpacity(0.1),
+                borderRadius: const BorderRadius.all(Radius.circular(12))
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(3.w),
+              child: Image.asset(Product.products[widget.index].img[0]),
             ),
           ),
         ),

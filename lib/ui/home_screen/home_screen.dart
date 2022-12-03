@@ -1,6 +1,7 @@
 import 'package:store_app/helper/api.dart';
 import 'package:store_app/helper/const.dart';
 import 'package:store_app/models/product_model.dart';
+import 'package:store_app/services/get_products.dart';
 import 'package:store_app/ui/home_screen/HomeProvider.dart';
 import 'package:store_app/ui/products.dart';
 import 'package:store_app/ui/widgets/home_app_bar.dart';
@@ -46,66 +47,65 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 2.h,
                       ),
-                      CustomImageSlider(
-                          images: homeProvider.images, provider: homeProvider),
-                      DotsIndicator(
-                          dotsLength: homeProvider.images.length,
-                          provider: homeProvider),
-                      // DiscountBanner(),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      CategoriesList(),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      BuildHeadLine(
-                        title: "Special for you",
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            SpecialOfferCard(
-                              img: "assets/images/imgBanner1.png",
-                              category: "Smartphone",
-                              numOfBrands: 18,
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            SpecialOfferCard(
-                              img: "assets/images/imgBanner2.png",
-                              category: "Fashion",
-                              numOfBrands: 24,
-                            ),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                          ],
-                        ),
+                      // CustomImageSlider(
+                      //     images: homeProvider.images, provider: homeProvider),
+                      // DotsIndicator(
+                      //     dotsLength: homeProvider.images.length,
+                      //     provider: homeProvider),
+                      // // DiscountBanner(),
+                      // SizedBox(
+                      //   height: 2.h,
+                      // ),
+                      // CategoriesList(),
+                      // SizedBox(
+                      //   height: 2.h,
+                      // ),
+                      // BuildHeadLine(
+                      //   title: "Special for you",
+                      // ),
+                      // SingleChildScrollView(
+                      //   scrollDirection: Axis.horizontal,
+                      //   child: Row(
+                      //     children: [
+                      //       SizedBox(
+                      //         width: 2.w,
+                      //       ),
+                      //       SpecialOfferCard(
+                      //         img: "assets/images/imgBanner1.png",
+                      //         category: "Smartphone",
+                      //         numOfBrands: 18,
+                      //       ),
+                      //       SizedBox(
+                      //         width: 3.w,
+                      //       ),
+                      //       SpecialOfferCard(
+                      //         img: "assets/images/imgBanner2.png",
+                      //         category: "Fashion",
+                      //         numOfBrands: 24,
+                      //       ),
+                      //       SizedBox(
+                      //         width: 2.w,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // BuildHeadLine(
+                      //   title: "Popular Product",
+                      // ),
+                      FutureBuilder<List<ProductModel>>(
+                        future: GetAllProduct.getAllProduct(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                             return Products(productList: snapshot.data,);
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        },
                       ),
                       BuildHeadLine(
                         title: "Popular Product",
                       ),
-                      FutureBuilder(
-                        future: Api.get(endPoint: Const.productsEP),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            print("herrr${snapshot.data}");
-                            Products();
-                          } else {
-                            CircularProgressIndicator();
-                          }
-                        },
-                      )
-                      // BuildHeadLine(
-                      //   title: "Popular Product",
-                      // ),
-                      // PopularList()
+                      PopularList()
                     ],
                   ),
                 ),
