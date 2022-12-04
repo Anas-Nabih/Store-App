@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:store_app/services/product_by_id.dart';
 import 'package:store_app/ui/cart_screen/cart_screen.dart';
+import 'package:store_app/ui/edit_product/edit_product_screen.dart';
 import 'package:store_app/ui/home_screen/product_model.dart';
 import 'package:store_app/ui/product_details/product_details_provider.dart';
 import 'package:store_app/ui/widgets/build_image_preview.dart';
@@ -54,6 +55,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             //   argument: argument,
                             //   provider: provider,
                             // ),
+                            DefaultButton(text: "Edit product",onPressed: ()=>
+                            Navigator.pushNamed(context, EditProductScreen.routeName)),
                             Expanded(
                               child: Container(
                                 padding: EdgeInsets.only(

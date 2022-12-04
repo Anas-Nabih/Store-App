@@ -1,4 +1,5 @@
 import 'package:store_app/ui/cart_screen/cart_screen.dart';
+import 'package:store_app/ui/edit_product/edit_product_screen.dart';
 import 'package:store_app/ui/home_screen/home_screen.dart';
 import 'package:store_app/ui/mainScreen/main_screen.dart';
 import 'package:store_app/ui/mainScreen/profile_screen/profile_screen.dart';
@@ -29,4 +30,5 @@ CartScreen.routeName: (context)=>CartScreen(),
 SearchScreen.routeName: (context)=>SearchScreen(),
 ProfileScreen.routeName:(context)=>ProfileScreen(),
 MainScreen.routeName: (context)=>MainScreen(),
+EditProductScreen.routeName: (context)=>EditProductScreen(),
  };
