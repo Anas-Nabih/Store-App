@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:store_app/constants.dart';
 import 'package:store_app/models/product_model.dart';
+import 'package:store_app/ui/product_details/product_details_screen.dart';
 
 class ApiCustomCard extends StatelessWidget {
   const ApiCustomCard({this.product});
@@ -15,9 +16,9 @@ class ApiCustomCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          // onTap:()=> Navigator.pushNamed(
-          //     context, ProductDetailScreen.routeName,
-          //     arguments: ProductDetailsArgument(product:Product.products[widget.index])),
+          onTap:()=> Navigator.
+          push(context, MaterialPageRoute(builder: (context) =>
+              ProductDetailScreen(productId: product.id,fromApi: true),)),
           child: Container(
             height: 25.h,
             width: 38.w,

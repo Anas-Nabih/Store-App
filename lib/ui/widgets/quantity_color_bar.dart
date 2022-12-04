@@ -21,15 +21,10 @@ class QuantityColorBar extends StatelessWidget {
       width: double.infinity,
       height: 8.h,
       padding: EdgeInsets.symmetric(vertical: 1.h,horizontal: 2.w),
+      margin: EdgeInsets.symmetric(horizontal: 2.w),
       decoration: BoxDecoration(
           color: kSecondaryColor.withOpacity(0.3),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-
-          )
+          borderRadius: BorderRadius.circular(12)
       ),
       child: Row(
         children: [
