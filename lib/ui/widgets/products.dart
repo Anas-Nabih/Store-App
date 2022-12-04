@@ -4,8 +4,8 @@ import 'package:sizer/sizer.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:store_app/ui/widgets/api_csutom_card.dart';
 
-class Products extends StatelessWidget {
-  const Products({this.productList});
+class ProductsList extends StatelessWidget {
+  const ProductsList({this.productList});
 
  final List<ProductModel> productList;
 

@@ -5,7 +5,7 @@ import 'package:store_app/models/product_model.dart';
 import 'package:store_app/models/special_products.dart';
 import 'package:store_app/services/get_products.dart';
 import 'package:store_app/ui/home_screen/HomeProvider.dart';
-import 'package:store_app/ui/products.dart';
+import 'package:store_app/ui/widgets/products.dart';
 import 'package:store_app/ui/widgets/home_app_bar.dart';
 import 'package:store_app/ui/widgets/home_categories_list.dart';
 import 'package:store_app/ui/widgets/home_head_line.dart';
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             future: GetAllProduct.getAllProduct(),
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
-                                return Products(productList: snapshot.data,);
+                                return ProductsList(productList: snapshot.data,);
                               } else {
                                 return Center(child: CircularProgressIndicator());
                               }
