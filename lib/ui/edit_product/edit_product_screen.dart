@@ -13,7 +13,8 @@ class EditProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Text("Product Name"),
+        title: Text("Product "
+            "Name"),
         centerTitle: true,
       ),
       body: Padding(
