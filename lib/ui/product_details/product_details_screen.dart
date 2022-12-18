@@ -12,6 +12,7 @@ import 'package:store_app/ui/widgets/custom_app_bar.dart';
 import 'package:store_app/ui/widgets/defult_button.dart';
 import 'package:store_app/ui/widgets/fav_button.dart';
 import 'package:store_app/ui/widgets/product_desc.dart';
+import 'package:store_app/ui/widgets/product_details_shimmer.dart';
 import 'package:store_app/ui/widgets/product_title.dart';
 import 'package:store_app/ui/widgets/quantity_color_bar.dart';
 
@@ -51,20 +52,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       if (snapshot.hasData) {
                         return Column(
                           children: [
+                            Container(
+                              height: 25.h,
+                               child: Image.network(product.image),
+                            ),
                             // BuildImagePreview(
                             //   argument: argument,
                             //   provider: provider,
                             // ),
-                            DefaultButton(text: "Edit product",onPressed: ()=>
-                            Navigator.pushNamed(context, UpdateProductScreen.routeName,arguments:product )),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.only(
-                                  top: 2.h,
-                                ),
-                                margin: EdgeInsets.only(
-                                  top: 4.h,
-                                ),
+                                padding: EdgeInsets.only(top: 2.h,),
+                                margin: EdgeInsets.only(top: 4.h,),
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
@@ -83,6 +82,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     // QuantityColorBar(
                                     //     argument: argument, provider: provider),
                                     SizedBox(height: 3.h),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 4.w),
+                                      child: DefaultButton(text: "Edit product",onPressed: ()=>
+                                          Navigator.pushNamed(context, UpdateProductScreen.routeName,arguments:product )),
+                                    ),
+
                                     // Padding(
                                     //   padding:
                                     //   EdgeInsets.symmetric(horizontal: 2.w),
@@ -103,7 +108,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ],
                         );
                       } else {
-                        return Center(child: CircularProgressIndicator());
+                        return Center(child: ProductDetailsShimmer());
                       }
                     },
                   )

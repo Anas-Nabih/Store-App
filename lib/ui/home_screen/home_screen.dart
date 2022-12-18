@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:store_app/helper/api.dart';
 import 'package:store_app/helper/const.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:store_app/models/special_products.dart';
+import 'package:store_app/res/colors.dart';
 import 'package:store_app/services/get_products.dart';
 import 'package:store_app/ui/home_screen/HomeProvider.dart';
+import 'package:store_app/ui/widgets/product_from_api_shimmer.dart';
 import 'package:store_app/ui/widgets/products.dart';
 import 'package:store_app/ui/widgets/home_app_bar.dart';
 import 'package:store_app/ui/widgets/home_categories_list.dart';
@@ -73,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               if (snapshot.hasData) {
                                 return ProductsList(productList: snapshot.data,);
                               } else {
-                                return Center(child: CircularProgressIndicator());
+                                return Center(child: ProductFromApiShimmer());
                               }
                             },
                           ),
