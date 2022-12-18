@@ -4,9 +4,9 @@ import 'package:sizer/sizer.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:store_app/services/product_by_id.dart';
 import 'package:store_app/ui/cart_screen/cart_screen.dart';
-import 'package:store_app/ui/edit_product/edit_product_screen.dart';
 import 'package:store_app/ui/home_screen/product_model.dart';
 import 'package:store_app/ui/product_details/product_details_provider.dart';
+import 'package:store_app/ui/update_product/update_product_screen.dart';
 import 'package:store_app/ui/widgets/build_image_preview.dart';
 import 'package:store_app/ui/widgets/custom_app_bar.dart';
 import 'package:store_app/ui/widgets/defult_button.dart';
@@ -47,7 +47,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ? FutureBuilder<ProductModel>(
                     future: GetProductById.getProductById(id: widget.productId),
                     builder: (context, snapshot) {
-                      ProductModel productDetails = snapshot.data;
+                      ProductModel product = snapshot.data;
                       if (snapshot.hasData) {
                         return Column(
                           children: [
@@ -56,7 +56,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             //   provider: provider,
                             // ),
                             DefaultButton(text: "Edit product",onPressed: ()=>
-                            Navigator.pushNamed(context, EditProductScreen.routeName)),
+                            Navigator.pushNamed(context, UpdateProductScreen.routeName,arguments:product )),
                             Expanded(
                               child: Container(
                                 padding: EdgeInsets.only(
@@ -77,9 +77,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   physics: BouncingScrollPhysics(),
                                   children: [
                                     ProductTitle(
-                                        productTitle: productDetails.title),
+                                        productTitle: product.title),
                                     // FavButton(argument: argument),
-                                    ProductDesc(desc: productDetails.description),
+                                    ProductDesc(desc: product.description),
                                     // QuantityColorBar(
                                     //     argument: argument, provider: provider),
                                     SizedBox(height: 3.h),

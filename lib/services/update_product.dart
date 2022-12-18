@@ -3,7 +3,7 @@ import 'package:store_app/helper/const.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:flutter/material.dart';
 
-class UpdateProduct {
+class UpdateProductService {
   Future<ProductModel> updateProduct({
     @required String id,
     @required String title,

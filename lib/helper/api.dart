@@ -8,6 +8,7 @@ class Api {
     http.Response response =
         await http.get(Uri.parse("${Const.baseURL}$endPoint"));
 
+    print("url:${Const.baseURL}/$endPoint\n body:${response.body}");
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
@@ -37,8 +38,10 @@ class Api {
       "Accept": "application/json",
       "Content-Type":"application/x-www-form-urlencoded",
     });
+    print("url:${Const.baseURL}/$endPoint\n body:$body");
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
+      print("Data: $data");
       return data;
     } else {
       throw Exception(

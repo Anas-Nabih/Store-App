@@ -9,14 +9,14 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,height: 50,
-      decoration: BoxDecoration(
-        color: kPrimaryColor,
-        borderRadius: BorderRadius.circular(15)
-      ),
-      child: GestureDetector(
-        onTap: onPressed,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: double.infinity,height: 50,
+        decoration: BoxDecoration(
+          color: kPrimaryColor,
+          borderRadius: BorderRadius.circular(15)
+        ),
         child: Center(child: Text(text??"Continue",
         style: TextStyle(color:kWhite,fontSize: 16.sp,fontWeight: FontWeight.w600 ),)),
       ),

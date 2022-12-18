@@ -49,7 +49,7 @@ class ApiCustomCard extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                "\$${product.id}",
+                "\$${product.price}",
                 style: TextStyle(
                     color: kPrimaryColor,
                     fontWeight: FontWeight.w500,
